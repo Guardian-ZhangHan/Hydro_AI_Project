@@ -1,33 +1,23 @@
+# Python 系统缓存
 __pycache__/
 *.py[cod]
-*.so
-.Python
-build/
-dist/
-eggs/
-lib/
-lib64/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+*.pyd
+*.log
+*.tmp
 
+# Jupyter 全部缓存
 .ipynb_checkpoints/
+*.ipynb_meta
 
-*.yml
-*.yaml
-!hydro_ai_environment_cleaned.yml
-
+# 模型大文件（不提交进git仓库）
 *.pth
 *.pkl
-*.csv
-*.nc
-*.tif
+*.npz
 
-.DS_Store
+# 图片、结果文件
+*.png
+*.jpg
+
+# 系统垃圾文件
 Thumbs.db
-
-.vscode/
-.idea/
-
-*.log
+.DS_Store

@@ -1,0 +1,201 @@
+                                   MODFLOW 6
+                U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
+                          GROUNDWATER FLOW MODEL (GWF)
+                            VERSION 6.7.0 02/05/2026
+
+   MODFLOW 6 compiled Feb 05 2026 22:36:44 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.6.0
+                             Build 20220226_000000
+
+This software has been approved for release by the U.S. Geological 
+Survey (USGS). Although the software has been subjected to rigorous 
+review, the USGS reserves the right to update the software as needed 
+pursuant to further analysis and review. No warranty, expressed or 
+implied, is made by the USGS or the U.S. Government as to the 
+functionality of the software and related material nor shall the 
+fact of release constitute any such warranty. Furthermore, the 
+software is released on condition that neither the USGS nor the U.S. 
+Government shall be held liable for any damages resulting from its 
+authorized or unauthorized use. Also refer to the USGS Water 
+Resources Software User Rights Notice for complete use, copyright, 
+and distribution information.
+
+
+As a work of the United States Government, this USGS product is 
+in the public domain within the United States. You can copy, 
+modify, distribute, and perform the work, even for commercial 
+purposes, all without asking permission. Additionally, USGS 
+waives copyright and related rights in the work worldwide 
+through CC0 1.0 Universal Public Domain Dedication 
+(https://creativecommons.org/publicdomain/zero/1.0/).
+
+The following GNU Lesser General Public License (LGPL) libraries
+are used in this USGS product:
+
+    SPARSKIT version 2.0
+      ilut, luson, and qsplit 
+      (https://www-users.cse.umn.edu/~saad/software/SPARSKIT/)
+
+    RCM - Reverse Cuthill McKee Ordering
+      (https://people.math.sc.edu/Burkardt/f_src/rcm/rcm.html)
+
+    BLAS - Basic Linear Algebra Subprograms Level 1
+      (https://people.math.sc.edu/Burkardt/f_src/blas1_d/blas1_d.html)
+
+    SPARSEKIT - Sparse Matrix Utility Package
+      amux, dperm, dvperm, rperm, and cperm
+      (https://people.sc.fsu.edu/~jburkardt/f77_src/sparsekit/sparsekit.html)
+
+The following BSD-3 License libraries are used in this USGS product:
+
+    Modern Fortran DAG Library
+      Copyright (c) 2018, Jacob Williams
+      All rights reserved.
+      (https://github.com/jacobwilliams/daglib)
+
+MODFLOW 6 compiler options: /Isrc\libmf6_external.a.p /Isrc\libmf6core.a.p
+/Isrc /I..\src /MT /nologo /warn:general /warn:truncated_source /stand:f18
+/O2 /fpe:0 /heap-arrays:0 /traceback /fpp /Qdiag-disable:7416
+/Qdiag-disable:7025 /Qdiag-disable:5268 /Qdiag-disable:10448
+/Fdsrc\libmf6core.a.p\Utilities_compilerversion.F90.pdb
+/module:src\libmf6core.a.p
+/Fosrc/libmf6core.a.p/Utilities_compilerversion.F90.obj /c
+
+System command used to initiate simulation:
+D:\Hydro_AI_Project\mf6.7.0_win64\bin\mf6.exe
+
+MODFLOW was compiled using uniform precision.
+
+Real Variables
+  KIND: 8
+  TINY (smallest non-zero value):    2.225074-308
+  HUGE (largest value):    1.797693+308
+  PRECISION: 15
+  SIZE IN BITS: 64
+
+Integer Variables
+  KIND: 4
+  HUGE (largest value): 2147483647
+  SIZE IN BITS: 32
+
+Long Integer Variables
+  KIND: 8
+  HUGE (largest value): 9223372036854775807
+  SIZE IN BITS: 64
+
+Logical Variables
+  KIND: 4
+  SIZE IN BITS: 32
+ 
+ NAMEFILE OPTIONS:
+ END NAMEFILE OPTIONS:
+
+ DIS -- STRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 2 : 3/27/2014 - INPUT READ FROM MEMPATH: __INPUT__/MODEL/DIS                               
+
+
+ NPF -- NODE PROPERTY FLOW PACKAGE, VERSION 1, 3/30/2015 INPUT READ FROM MEMPATH: __INPUT__/MODEL/NPF                               
+
+
+ IC -- Initial Conditions Package, Version 8, 3/28/2015 input read from mempath: __INPUT__/MODEL/IC                                
+
+
+ Setting Discretization Options
+ End Setting Discretization Options
+
+ Setting Discretization Dimensions
+    NLAY = 1
+    NROW = 10
+    NCOL = 10
+ End Setting Discretization Dimensions
+
+ Setting Discretization Griddata
+    DELR set from input file
+    DELC set from input file
+    TOP set from input file
+    BOTM set from input file
+ End Setting Discretization Griddata
+
+ Setting NPF Options
+ End Setting NPF Options
+
+ Setting NPF Griddata
+    ICELLTYPE set from input file
+    K set from input file
+    K33 not provided.  Setting K33 = K.
+    K22 not provided.  Setting K22 = K.
+ End Setting NPF Griddata
+
+
+ CHD -- CHD PACKAGE, VERSION 8, 2/22/2014 INPUT READ FROM MEMPATH: __INPUT__/MODEL/CHD_0                             
+
+ PROCESSING CHD BASE OPTIONS
+ END OF CHD BASE OPTIONS
+
+ PROCESSING CHD BASE DIMENSIONS
+    MAXBOUND =      20
+ END OF CHD BASE DIMENSIONS
+    STRT set from input file
+    BINARY GRID INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1011
+      FILE NAME: model.dis.grb
+
+ OPENED model.dis.grb
+ FILE TYPE:DATA(BINARY)   UNIT 1011   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+      THE LAST TIME STEP WILL BE PRINTED
+      THE LAST TIME STEP WILL BE PRINTED
+
+start timestep kper="1" kstp="1" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP   1 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   2    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   3    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   4    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   5    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   6    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   7    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   8    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+   9    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+  10    10.00       9.575       9.130       8.662       8.167       7.640       7.074       6.458       5.776       5.000    
+
+
+  VOLUME BUDGET FOR ENTIRE MODEL AT END OF TIME STEP    1, STRESS PERIOD   1
+  ---------------------------------------------------------------------------------------------------
+
+     CUMULATIVE VOLUME      L**3       RATES FOR THIS TIME STEP      L**3/T          PACKAGE NAME    
+     ------------------                 ------------------------                     ----------------
+
+           IN:                                      IN:
+           ---                                      ---
+                 CHD =          41.5949                   CHD =          41.5949     CHD_0                            
+
+            TOTAL IN =          41.5949              TOTAL IN =          41.5949
+
+          OUT:                                     OUT:
+          ----                                     ----
+                 CHD =          41.5971                   CHD =          41.5971     CHD_0                            
+
+           TOTAL OUT =          41.5971             TOTAL OUT =          41.5971
+
+            IN - OUT =      -2.2324E-03              IN - OUT =      -2.2324E-03
+
+ PERCENT DISCREPANCY =          -0.01     PERCENT DISCREPANCY =          -0.01
+
+
+
+
+         TIME SUMMARY AT END OF TIME STEP    1 IN STRESS PERIOD    1
+                          TIME STEP LENGTH =    1.00000    
+                        STRESS PERIOD TIME =    1.00000    
+                     TOTAL SIMULATION TIME =    1.00000    
+
+end timestep
+
