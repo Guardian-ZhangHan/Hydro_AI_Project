@@ -21,3 +21,11 @@ __pycache__/
 # 系统垃圾文件
 Thumbs.db
 .DS_Store
+# ------------------- 新增内容开始 -------------------
+# MODFLOW 大文件/示例文件（不提交到Git）
+02_code/mf6.7.0_win64/doc/*.pdf
+02_code/mf6.7.0_win64/examples/**/*.uzf
+02_code/mf6.7.0_win64/examples/**/*.hds
+02_code/mf6.7.0_win64/examples/**/*.cbb
+02_code/mf6.7.0_win64/examples/**/*.bin
+# ------------------- 新增内容结束 -------------------
