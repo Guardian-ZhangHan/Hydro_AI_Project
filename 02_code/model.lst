@@ -1,11 +1,11 @@
                                    MODFLOW 6
                 U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
                           GROUNDWATER FLOW MODEL (GWF)
-                            VERSION 6.7.0 02/05/2026
+                            VERSION 6.6.3 09/29/2025
 
-   MODFLOW 6 compiled Feb 05 2026 22:36:44 with Intel(R) Fortran Intel(R) 64
-   Compiler Classic for applications running on Intel(R) 64, Version 2021.6.0
-                             Build 20220226_000000
+   MODFLOW 6 compiled Oct 07 2025 23:07:48 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.7.0
+                             Build 20220726_000000
 
 This software has been approved for release by the U.S. Geological 
 Survey (USGS). Although the software has been subjected to rigorous 
@@ -53,16 +53,11 @@ The following BSD-3 License libraries are used in this USGS product:
       All rights reserved.
       (https://github.com/jacobwilliams/daglib)
 
-MODFLOW 6 compiler options: /Isrc\libmf6_external.a.p /Isrc\libmf6core.a.p
-/Isrc /I..\src /MT /nologo /warn:general /warn:truncated_source /stand:f18
-/O2 /fpe:0 /heap-arrays:0 /traceback /fpp /Qdiag-disable:7416
-/Qdiag-disable:7025 /Qdiag-disable:5268 /Qdiag-disable:10448
-/Fdsrc\libmf6core.a.p\Utilities_compilerversion.F90.pdb
-/module:src\libmf6core.a.p
-/Fosrc/libmf6core.a.p/Utilities_compilerversion.F90.obj /c
+MODFLOW 6 compiler options: /O2 /heap-arrays:0 /fpe:0 /traceback /nologo /fpp
+/c /module:win64\mod_mf6\ /object:win64\obj_mf6\
 
 System command used to initiate simulation:
-D:\Hydro_AI_Project\mf6.7.0_win64\bin\mf6.exe
+C:\Users\zhl18\AppData\Local\flopy\bin\mf6.exe
 
 MODFLOW was compiled using uniform precision.
 

@@ -2,10 +2,3 @@
 BEGIN options
 END options
 
-BEGIN griddata
-  icelltype
-    CONSTANT  1
-  k
-    CONSTANT       1.00000000
-END griddata
-

@@ -7,11 +7,11 @@ exe_path = r"D:\Hydro_AI_Project\mf6.7.0_win64\bin\mf6.exe"
 
 # 1. 初始化MODFLOW6模拟
 sim = flopy.mf6.MFSimulation(
-    sim_name="first_test",
-    exe_name=exe_path,
-    version="mf6"
-)
-
+    sim_name="test",
+    version="mf6",
+    exe_name="mf6",  # 改成自动调用，让系统在PATH里找mf6.exe
+    sim_ws="./",
+    )
 # 2. 时间离散（MODFLOW6强制第一步）
 tdis = flopy.mf6.ModflowTdis(
     sim,
