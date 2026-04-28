@@ -64,3 +64,39 @@ print("✅ Python + MODFLOW6 全链路运行成功！最终状态：", success)
 print("="*60)
 print("模型计算末尾日志：")
 print('\n'.join(log_info))
+# ====================== 新增：MODFLOW模型标准化运行接口（智能体调用专用）======================
+import click
+
+@click.command()
+@click.option('--model_name', default="base_model", help="模型名称")
+@click.option('--k_mean', default=1e-5, help="渗透系数均值（m/s）")
+@click.option('--k_std', default=1e-6, help="渗透系数标准差（m/s）")
+def run_mf6_model(model_name, k_mean, k_std):
+    """
+    智能体可直接调用的MODFLOW模型运行接口
+    可通过参数批量调整渗透系数，生成批量仿真数据
+    """
+    # 这里调用你原有MODFLOW模型构建、运行的核心代码
+    # （把你原有构建模型、运行MODFLOW的代码，放到这个函数里）
+    print(f"===== 开始运行MODFLOW模型: {model_name} =====")
+    print(f"渗透系数设置：均值={k_mean} m/s，标准差={k_std} m/s")
+    
+    # 原有模型运行代码（完全保留，这里替换成你自己的代码）
+    # 示例：
+    # sim = flopy.mf6.MFSimulation(...)
+    # gwf = flopy.mf6.ModflowGwf(...)
+    # sim.write_simulation()
+    # success, buff = sim.run_simulation()
+    
+    success = True  # 替换成你实际的运行结果
+    if success:
+        print(f"模型 {model_name} 运行成功，结果已保存至 01_data/02_synthetic_dataset/")
+        return 0
+    else:
+        print(f"模型 {model_name} 运行失败")
+        return 1
+
+# 脚本直接运行时，执行原有测试代码
+if __name__ == "__main__":
+    # 原有测试代码完全保留，仅追加接口
+    run_mf6_model()

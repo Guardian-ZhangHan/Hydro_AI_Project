@@ -68,3 +68,52 @@ if __name__ == "__main__":
     print(f"输出K值最小值：{test_output.min().item():.4f}")
     print(f"输出K值最大值：{test_output.max().item():.4f}")
     print("="*50)
+    # ====================== 新增：模型保存/加载接口（智能体调用专用）======================
+import os
+
+def save_model(model, save_path="../03_model_weights/hydro_inversion_nn_base.pth"):
+    """
+    保存模型权重到固定路径，智能体可直接调用
+    :param model: 训练好的HydroInversionNN模型
+    :param save_path: 权重保存路径
+    """
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    torch.save(model.state_dict(), save_path)
+    print(f"模型已保存至: {save_path}")
+
+def load_model(model_path="../03_model_weights/hydro_inversion_nn_base.pth"):
+    """
+    加载预训练模型，智能体可直接调用
+    :param model_path: 权重文件路径
+    :return: 加载好权重的模型
+    """
+    model = HydroInversionNN()
+    model.load_state_dict(torch.load(model_path))
+    model.eval()  # 推理模式
+    print(f"模型已从 {model_path} 加载完成")
+    return model
+
+# 测试接口（运行脚本时自动验证，不影响原有功能）
+if __name__ == "__main__":
+    # 原有测试代码（完全保留）
+    model = HydroInversionNN()
+    test_input = torch.randn(1, 5)
+    test_output = model(test_input)
+    print("="*50)
+    print("水文地质参数反演神经网络结构:")
+    print(model)
+    print("="*50)
+    print(f"测试输入维度: {test_input.shape} （1组5口监测井水头）")
+    print(f"测试输出维度: {test_output.shape} （1组10×10网格K值）")
+    print("="*50)
+    print(f"输出K值最小值: {test_output.min().item():.4f}")
+    print(f"输出K值最大值: {test_output.max().item():.4f}")
+    print("="*50)
+
+    # 新增：测试保存/加载接口
+    save_model(model)
+    loaded_model = load_model()
+    # 验证加载后的模型输出一致
+    loaded_output = loaded_model(test_input)
+    print(f"模型加载验证：输出差值最大值 {torch.abs(test_output - loaded_output).max().item():.8f}")
+    print("模型保存/加载接口正常，智能体可调用")
