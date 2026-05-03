@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 解决中文显示问题
-plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
-# ===================== 1. 固定全量随机种子，与Day1-3完全一致，严格控制变量 =====================
+plt.rcParams['axes.unicode_minus'] = False    # 解决负号显示问题
+
 import torch
 import torch.nn as nn
 import numpy as np
@@ -16,7 +16,7 @@ if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
-# ===================== 2. 100%复用Day1的水文反演神经网络骨架，严格控制变量 =====================
+# ===================== 2. 100%复用Day1的水文反演神经网络骨架，加入Dropout =====================
 class HydroInversionNN(nn.Module):
     def __init__(self):
         super(HydroInversionNN, self).__init__()
@@ -24,10 +24,11 @@ class HydroInversionNN(nn.Module):
         self.fc2 = nn.Linear(32, 64)
         self.fc3 = nn.Linear(64, 100)
         self.tanh = nn.Tanh()
+        self.dropout = nn.Dropout(p=0.2)  # 新增Dropout层，失活概率20%
 
     def forward(self, x):
-        x = self.tanh(self.fc1(x))
-        x = self.tanh(self.fc2(x))
+        x = self.dropout(self.tanh(self.fc1(x)))  # 激活后加入Dropout
+        x = self.dropout(self.tanh(self.fc2(x)))
         x = self.fc3(x)
         return x
 
@@ -43,16 +44,22 @@ y_train = torch.randn(10, 100) # 10组训练标签（真实K值）
 x_val = torch.randn(5, 5)
 y_val = torch.randn(5, 100)
 
-# ===================== 5. 初始化模型与优化器，无任何防过拟合措施 =====================
+# ===================== 5. 初始化模型与优化器，加入L2正则化 =====================
 model = HydroInversionNN()
-optimizer = torch.optim.Adam(model.parameters(), lr=1e-3) # 用Day3找到的最优学习率
+optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-4) # 加入L2正则化
 
 # 用于记录每一轮的训练/验证损失
 train_loss_history = []
 val_loss_history = []
 epochs = 300 # 增加训练轮数，放大过拟合现象
 
-# ===================== 6. 训练循环，复现过拟合 =====================
+# ===================== 6. 早停法参数初始化 =====================
+patience = 20  # 容忍验证损失不下降的最大轮数
+best_val_loss = float('inf')
+stop_counter = 0
+best_model_state = None
+
+# ===================== 7. 训练循环，复现过拟合 =====================
 print("="*70)
 print("开始训练：复现少样本水文反演场景下的过拟合现象")
 print("="*70)
@@ -78,6 +85,18 @@ for epoch in range(epochs):
     train_loss_history.append(train_loss.item())
     val_loss_history.append(val_loss.item())
     
+    # -------------------------- 新增：早停法核心判断 --------------------------
+    if val_loss < best_val_loss:
+        best_val_loss = val_loss
+        best_model_state = model.state_dict()  # 保存当前最优模型
+        stop_counter = 0  # 重置计数器
+    else:
+        stop_counter += 1
+        if stop_counter >= patience:
+            print(f"早停法触发：第{epoch+1}轮，验证损失连续{patience}轮未下降，训练提前终止")
+            model.load_state_dict(best_model_state)  # 加载最优模型
+            break
+    
     # 每30轮打印一次训练进度
     if (epoch + 1) % 30 == 0:
         print(f"Epoch [{epoch+1}/{epochs}], 训练损失: {train_loss.item():.6f}, 验证损失: {val_loss.item():.6f}")
@@ -86,24 +105,24 @@ print("="*70)
 print("训练完成，过拟合现象复现完毕")
 print("="*70)
 
-# ===================== 7. 过拟合特征量化分析 =====================
+# ===================== 8. 过拟合特征量化分析 =====================
 # 找到验证损失的最小值和对应的轮数
 min_val_loss = min(val_loss_history)
 min_val_epoch = val_loss_history.index(min_val_loss) + 1
 final_train_loss = train_loss_history[-1]
 final_val_loss = val_loss_history[-1]
 
-print("📌 过拟合核心特征量化分析：")
+print("⭐ 过拟合核心特征量化分析：")
 print(f"1. 验证损失最小值：{min_val_loss:.6f}，出现在第 {min_val_epoch} 轮")
 print(f"2. 最终训练损失：{final_train_loss:.6f}，最终验证损失：{final_val_loss:.6f}")
 print(f"3. 训练结束时，验证损失较最小值上升了：{(final_val_loss - min_val_loss)/min_val_loss*100:.2f}%")
 print(f"4. 核心过拟合判定：训练损失持续下降，验证损失在第{min_val_epoch}轮后持续上升，符合过拟合标准")
 print("="*70)
 
-# ===================== 8. 生成过拟合损失曲线，直接用于论文 =====================
+# ===================== 9. 生成过拟合损失曲线，直接用于论文 =====================
 plt.figure(figsize=(10, 6), dpi=300)
-plt.plot(range(1, epochs+1), train_loss_history, label="训练损失", linewidth=1.5, color="#1f77b4")
-plt.plot(range(1, epochs+1), val_loss_history, label="验证损失", linewidth=1.5, color="#ff7f0e")
+plt.plot(range(1, len(train_loss_history)+1), train_loss_history, label="训练损失", linewidth=1.5, color="#1f77b4")
+plt.plot(range(1, len(val_loss_history)+1), val_loss_history, label="验证损失", linewidth=1.5, color="#ff7f0e")
 
 # 标注验证损失最小值点
 plt.scatter(min_val_epoch, min_val_loss, color="red", s=50, label=f"验证损失最小值（第{min_val_epoch}轮）")
