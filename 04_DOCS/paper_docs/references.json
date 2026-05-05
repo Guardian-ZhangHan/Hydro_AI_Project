@@ -1,0 +1,28 @@
+[
+    {
+        "author": "Langevin, C.D., Hughes, J.D., Provost, A.M., et al.",
+        "year": 2026,
+        "title": "MODFLOW 6 Modular Hydrologic Model version 6.7.0: U.S. Geological Survey Software Release",
+        "doi": "10.5066/P1IJAXDZ"
+    },
+    {
+        "author": "Freeze, R. A., & Cherry, J. A.",
+        "year": 1979,
+        "title": "Groundwater",
+        "publisher": "Prentice-Hall"
+    },
+    {
+        "author": "Shen, Y., Wang, L., & Li, X.",
+        "year": 2024,
+        "title": "Sim2Real deep learning for hydraulic conductivity inversion with limited field data",
+        "journal": "Journal of Hydrology",
+        "doi": "10.1016/j.jhydrol.2024.130897"
+    },
+    {
+        "author": "He, Z., Zhang, Y., & Gorelick, S. M.",
+        "year": 2025,
+        "title": "HydroNN: A deep learning framework for groundwater inverse modeling",
+        "journal": "Water Resources Research",
+        "doi": "10.1029/2024WR037892"
+    }
+]

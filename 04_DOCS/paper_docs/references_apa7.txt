@@ -1,0 +1,3 @@
+Langevin, C.D., Hughes, J.D., Provost, A.M., Niswonger, R.G., Panday, S., & Tonkin, M.J. (2024). MODFLOW 6 Modular Hydrologic Model version 6.7.0. U.S. Geological Survey Software Release. https://doi.org/10.5066/P1IJAXDZ
+Freeze, R. A., & Cherry, J. A. (1979). Groundwater. Prentice-Hall. https://doi.org/
+Carrera, J., & Neuman, S. P. (1986). Estimation of aquifer parameters under transient and steady state conditions: 1. Maximum likelihood method incorporating prior information. Water Resources Research. https://doi.org/10.1029/WR022i002p00199

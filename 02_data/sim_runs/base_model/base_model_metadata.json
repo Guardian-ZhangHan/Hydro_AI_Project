@@ -1,0 +1,13 @@
+{
+    "model_name": "base_model",
+    "k_mean": 1e-05,
+    "k_std": 1e-06,
+    "grid": {
+        "nrow": 10,
+        "ncol": 10
+    },
+    "water_balance_error": 999.0,
+    "run_time": 0.11377406120300293,
+    "timestamp": "2026-05-05T10:32:37.108519",
+    "convergence_passed": true
+}
