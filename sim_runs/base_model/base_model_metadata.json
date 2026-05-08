@@ -1,0 +1,35 @@
+{
+    "model_name": "base_model",
+    "k_mean": 1e-05,
+    "k_std": 1e-06,
+    "grid": {
+        "nrow": 10,
+        "ncol": 10,
+        "nlay": 1
+    },
+    "water_balance_error": 999.0,
+    "run_time": 0.16452646255493164,
+    "timestamp": "2026-05-08T17:23:27.453086",
+    "convergence_passed": true,
+    "noise_enabled": true,
+    "noise_info": {
+        "noise_0.01m": {
+            "noise_type": "gaussian",
+            "noise_level": 0.01,
+            "noise_mean": 0.0006412259527159854,
+            "noise_std": 0.010350647263127913
+        },
+        "noise_0.05m": {
+            "noise_type": "gaussian",
+            "noise_level": 0.05,
+            "noise_mean": -0.002367872080889105,
+            "noise_std": 0.04890562993918409
+        },
+        "noise_0.1m": {
+            "noise_type": "gaussian",
+            "noise_level": 0.1,
+            "noise_mean": 0.0054836659762474895,
+            "noise_std": 0.08627406405900603
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "config": {
+        "SEED_NP": 42,
+        "SEED_PY": 142,
+        "SEED_MF6": 242,
+        "SEED_MP": 342,
+        "SEED_NOISE": 542,
+        "MF6_EXE_PATH": "D:\\Hydro_AI_Project\\mf6.7.0_win64\\bin\\mf6.exe",
+        "CONVERGENCE_THRESHOLD": 1e-06,
+        "MAX_RETRY": 3,
+        "NROW": 10,
+        "NCOL": 10,
+        "NLAY": 1,
+        "DELR": 100.0,
+        "DELC": 100.0,
+        "TOP": 100.0,
+        "BOTM": 0.0,
+        "PERLEN": 1.0,
+        "NSTP": 1,
+        "TSMULT": 1.0,
+        "K_MIN": 1e-07,
+        "K_MAX": 0.001,
+        "K_DEFAULT_MEAN": 1e-05,
+        "K_DEFAULT_STD": 1e-06,
+        "HLEFT": 10.0,
+        "HRIGHT": 5.0,
+        "ENABLE_NOISE": true,
+        "NOISE_LEVELS": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "NOISE_TYPE": "gaussian",
+        "TRAIN_RATIO": 0.7,
+        "VAL_RATIO": 0.2,
+        "TEST_RATIO": 0.1,
+        "SCALER_RANGE": [
+            0,
+            1
+        ],
+        "BASE_DIR": "D:\\Hydro_AI_Project",
+        "SIM_RUN_ROOT": "D:\\Hydro_AI_Project\\sim_runs",
+        "DATASET_DIR": "D:\\Hydro_AI_Project\\data\\sim_dataset",
+        "LOG_DIR": "D:\\Hydro_AI_Project\\logs",
+        "META_DIR": "D:\\Hydro_AI_Project\\metadata",
+        "FIGURE_DIR": "D:\\Hydro_AI_Project\\figures\\sim_preview",
+        "DOC_DIR": "D:\\Hydro_AI_Project\\paper_docs",
+        "SCALER_DIR": "D:\\Hydro_AI_Project\\scalers"
+    },
+    "task_summary": {
+        "batch_size": 1,
+        "success_count": 1,
+        "total_time": 1.0371997356414795,
+        "parallel": true
+    },
+    "timestamp": "2026-05-08T17:23:28.341807",
+    "python_version": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:36:49) [MSC v.1944 64 bit (AMD64)]",
+    "flopy_version": "3.8.0",
+    "numpy_version": "1.26.0",
+    "sklearn_version": "1.4.0"
+}
