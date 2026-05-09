@@ -1,0 +1,41 @@
+# ==============================================
+# Week2-Day4 MODFLOW批量建模配置文件
+# ==============================================
+# 路径配置
+paths:
+  mf6_exe_path: "D:\\Hydro_AI_Project\\mf6.7.0_win64\\bin\\mf6.exe"
+  base_dir: "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4"
+  model_output_subdir: "modflow_batch_1000"
+  dataset_save_subdir: "dataset"
+  docs_subdir: "docs"
+  log_subdir: "logs"
+  checkpoint_subdir: "checkpoints"
+  plot_subdir: "dataset_plots"
+
+# 模型参数（论文方法部分可直接引用）
+model:
+  random_seed: 42
+  nlay: 1
+  nrow: 10
+  ncol: 10
+  delr: 100.0
+  delc: 100.0
+  top: 100.0
+  botm: 0.0
+  perlen: 1000.0
+  nstp: 1
+  tsmult: 1.0
+  steady: {0: true}
+  monitor_wells: [[0,2,2],[0,2,7],[0,5,5],[0,7,2],[0,7,7]]
+  total_models: 1000
+  k_min: 1.0
+  k_max: 5.0
+  max_retry: 1
+
+# 优化参数
+optimization:
+  checkpoint_interval: 100
+  clean_up_temp_files: true
+  data_validation: true
+  max_hydraulic_gradient: 0.1  # 【已修复】从0.01放宽到0.1，避免均匀场误判
+  plot_samples: [0, 100, 500, 999]

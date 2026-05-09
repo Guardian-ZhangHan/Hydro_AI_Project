@@ -1,0 +1,46 @@
+# ==============================================
+# Week2-Day4 水文反演模型训练与权重管理配置
+# 研究场景：Sim2Real地下水渗透系数反演
+# 顶刊规范：所有参数可追溯，论文可直接引用
+# 【已修复】所有数值参数为纯数字类型，彻底解决类型错误
+# ==============================================
+# 路径配置
+paths:
+  dataset_path: "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4\\dataset\\sim2real_full_dataset.npz"
+  base_dir: "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4"
+  weight_save_subdir: "model_weights"
+  log_subdir: "logs"
+  plot_subdir: "train_plots"
+  docs_subdir: "docs"
+
+# 随机种子（全链路固定，100%可复现）
+random_seed: 42
+
+# 数据集配置
+dataset:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  normalize: true
+
+# 模型结构配置
+model:
+  input_dim: 5
+  output_dim: 100
+  hidden_dims: [64, 128, 256, 128]
+  activation: "ReLU"
+  batch_norm: true
+
+# 训练配置【核心修复：所有数值为纯数字，无科学计数法字符串解析问题】
+train:
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  early_stop_patience: 15
+  lr_scheduler_patience: 5
+  lr_scheduler_factor: 0.5
+
+# Sim2Real微调配置
+finetune:
+  freeze_layers: ["layer1", "layer2", "layer3"]

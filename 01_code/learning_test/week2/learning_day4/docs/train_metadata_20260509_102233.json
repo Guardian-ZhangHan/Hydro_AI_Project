@@ -1,0 +1,61 @@
+{
+  "run_id": "20260509_102233",
+  "config": {
+    "paths": {
+      "dataset_path": "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4\\dataset\\sim2real_full_dataset.npz",
+      "base_dir": "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4",
+      "weight_save_subdir": "model_weights",
+      "log_subdir": "logs",
+      "plot_subdir": "train_plots",
+      "docs_subdir": "docs"
+    },
+    "random_seed": 42,
+    "dataset": {
+      "train_ratio": 0.8,
+      "val_ratio": 0.1,
+      "test_ratio": 0.1,
+      "normalize": true
+    },
+    "model": {
+      "input_dim": 5,
+      "output_dim": 100,
+      "hidden_dims": [
+        64,
+        128,
+        256,
+        128
+      ],
+      "activation": "ReLU",
+      "batch_norm": true
+    },
+    "train": {
+      "batch_size": 32,
+      "epochs": 100,
+      "learning_rate": 0.001,
+      "weight_decay": 1e-05,
+      "early_stop_patience": 15,
+      "lr_scheduler_patience": 5,
+      "lr_scheduler_factor": 0.5
+    },
+    "finetune": {
+      "freeze_layers": [
+        "layer1",
+        "layer2",
+        "layer3"
+      ]
+    }
+  },
+  "env_info": {
+    "python_version": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:36:49) [MSC v.1944 64 bit (AMD64)]",
+    "torch_version": "2.5.1",
+    "numpy_version": "1.26.4",
+    "yaml_version": "6.0.3",
+    "os": "Windows 10",
+    "cuda_available": false,
+    "cuda_version": "None",
+    "run_time": "2026-05-09 10:22:33"
+  },
+  "best_epoch": 2,
+  "best_val_loss": 0.9892024755477905,
+  "test_metrics_physical": {
+    "mse": 

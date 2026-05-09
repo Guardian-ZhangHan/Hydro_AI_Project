@@ -1,0 +1,101 @@
+{
+  "config": {
+    "paths": {
+      "mf6_exe_path": "D:\\Hydro_AI_Project\\mf6.7.0_win64\\bin\\mf6.exe",
+      "base_dir": "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4",
+      "model_output_subdir": "modflow_batch_1000",
+      "dataset_save_subdir": "dataset",
+      "docs_subdir": "docs",
+      "log_subdir": "logs",
+      "checkpoint_subdir": "checkpoints",
+      "plot_subdir": "dataset_plots"
+    },
+    "model": {
+      "random_seed": 42,
+      "nlay": 1,
+      "nrow": 10,
+      "ncol": 10,
+      "delr": 100.0,
+      "delc": 100.0,
+      "top": 100.0,
+      "botm": 0.0,
+      "perlen": 1000.0,
+      "nstp": 1,
+      "tsmult": 1.0,
+      "steady": {
+        "0": true
+      },
+      "monitor_wells": [
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          7
+        ],
+        [
+          0,
+          5,
+          5
+        ],
+        [
+          0,
+          7,
+          2
+        ],
+        [
+          0,
+          7,
+          7
+        ]
+      ],
+      "total_models": 1000,
+      "k_min": 1.0,
+      "k_max": 5.0,
+      "max_retry": 1
+    },
+    "optimization": {
+      "checkpoint_interval": 100,
+      "clean_up_temp_files": true,
+      "data_validation": true,
+      "max_hydraulic_gradient": 0.1,
+      "plot_samples": [
+        0,
+        100,
+        500,
+        999
+      ]
+    }
+  },
+  "env_info": {
+    "python_version": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:36:49) [MSC v.1944 64 bit (AMD64)]",
+    "flopy_version": "3.10.0",
+    "numpy_version": "2.2.6",
+    "yaml_version": "6.0.3",
+    "os": "Windows 10",
+    "mf6_exe_path": "D:\\Hydro_AI_Project\\mf6.7.0_win64\\bin\\mf6.exe",
+    "run_time": "2026-05-09 09:46:56"
+  },
+  "dataset_stats": {
+    "head": {
+      "mean": 94.99197387695312,
+      "std": 2.5086188316345215,
+      "min": 91.62561798095703,
+      "max": 98.55602264404297
+    },
+    "k": {
+      "mean": 2.9978036880493164,
+      "std": 1.1550124883651733,
+      "min": 1.0000005960464478,
+      "max": 4.999988079071045
+    }
+  },
+  "total_models": 1000,
+  "success_models": 1000,
+  "failed_model_ids": [],
+  "dataset_hash": "1532be7fafa5c097e8b8529fdeb80cdcb3fe93af67ffcb92192dad9b31860a97",
+  "log_file": "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4\\logs\\modflow_batch_20260509_094656.log"
+}
