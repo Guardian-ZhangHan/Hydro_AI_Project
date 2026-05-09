@@ -1,0 +1,53 @@
+# ==============================================
+# Week2-Day5 早停机制与泛化能力优化配置文件
+# 顶刊规范：全参数可追溯，无字符串类型错误
+# ==============================================
+# 路径配置
+paths:
+  dataset_path: "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day4\\dataset\\sim2real_full_dataset.npz"
+  base_dir: "D:\\Hydro_AI_Project\\01_code\\learning_test\\week2\\learning_day5"
+  weight_save_subdir: "model_weights"
+  log_subdir: "logs\\train_logs"
+  doc_subdir: "docs"
+
+# 随机种子（全链路固定，100%可复现）
+random_seed: 42
+
+# 数据集配置
+dataset:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  normalize: true
+
+# 模型结构配置
+model:
+  input_dim: 5
+  output_dim: 100
+  hidden_dims: [64, 128, 256, 128]
+  activation: "ReLU"
+  batch_norm: true
+  dropout_rate: 0.0
+
+# 训练配置
+train:
+  batch_size: 32
+  epochs: 300
+  learning_rate: 0.001
+  weight_decay: 0.00001  # 纯数字，无引号，彻底解决类型报错
+  lr_scheduler_patience: 10
+  lr_scheduler_factor: 0.5
+
+# 早停机制配置
+early_stopping:
+  enable: true
+  patience: 150
+  min_delta: 0.000001
+  mode: "min"
+  restore_best_weights: true
+  save_best_model: true
+
+# 日志配置
+log:
+  print_interval: 10
+  save_train_history: true
