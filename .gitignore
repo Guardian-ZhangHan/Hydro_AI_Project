@@ -29,3 +29,4 @@ Thumbs.db
 02_code/mf6.7.0_win64/examples/**/*.cbb
 02_code/mf6.7.0_win64/examples/**/*.bin
 # ------------------- 新增内容结束 -------------------
+/data
